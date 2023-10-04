@@ -2,10 +2,11 @@ package web.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import web.repository.UserRepository;
 import web.model.User;
 
-import javax.transaction.Transactional;
+
 import java.util.List;
 
 @Component
@@ -19,7 +20,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public List<User> getAllUsers() {
         return userRepository.getAllUsers();
     }
@@ -27,12 +28,11 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void addUser(User user) {
-
         userRepository.addUser(user.getFirstName(), user.getLastName());
     }
 
     @Override
-    @Transactional
+    @Transactional(readOnly = true)
     public User getUserById(Long id) {
        return userRepository.getUserById(id);
     }

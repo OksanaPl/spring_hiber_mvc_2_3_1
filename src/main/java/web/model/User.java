@@ -1,6 +1,15 @@
 package web.model;
 
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.Objects;
 
 @Entity
@@ -11,9 +20,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
+    @NotNull(message = "firstName must not be null")
+    @Pattern(regexp = "[a-zA-Z]", message = "firstName must not contain special characters")
     @Column(name = "first_name")
     private String firstName;
 
+    @NotBlank
+    @NotNull(message = "lastName must not be null")
+    @Pattern(regexp = "[a-zA-Z]", message = "lastName must not contain special characters")
     @Column(name = "last_name")
     private String lastName;
 

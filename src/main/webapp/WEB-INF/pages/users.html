@@ -15,7 +15,7 @@
             <td th:text="${user.getLastName()}">LastName</td>
 
             <td>
-                <form th:action="@{users/update/(id=${user.id})}" th:object="${user}">
+                <form th:action="@{users/update(id=${user.id})}" th:object="${user}">
                     <input type="hidden" name="id" th:value="${user.id}">
                     <button type="submit">Update</button>
                 </form>
