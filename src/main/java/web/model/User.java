@@ -22,13 +22,13 @@ public class User {
 
     @NotBlank
     @NotNull(message = "firstName must not be null")
-    @Pattern(regexp = "[a-zA-Z]", message = "firstName must not contain special characters")
+    @Pattern(regexp = "[a-zA-Z]*", message = "firstName must not contain special characters")
     @Column(name = "first_name")
     private String firstName;
 
     @NotBlank
     @NotNull(message = "lastName must not be null")
-    @Pattern(regexp = "[a-zA-Z]", message = "lastName must not contain special characters")
+    @Pattern(regexp = "[a-zA-Z]*", message = "lastName must not contain special characters")
     @Column(name = "last_name")
     private String lastName;
 
